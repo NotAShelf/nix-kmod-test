@@ -24,4 +24,4 @@ non-conventional[^1].
 
 [^1]:
     "Conventional" is doing some heavy-lifting here. A lot of the things done
-    here are conventional _and_ idiomatic.
+    here are conventional _and_ idiomatic. Documented? Absolutely fucking not.
