@@ -79,11 +79,14 @@
             info.enable = false;
           };
 
-          # Get out
+          # Get out.
           programs = {
             bash.completion.enable = false;
             command-not-found.enable = false;
           };
+
+          # Shut up.
+          system.stateVersion = "24.11";
         })
       ];
     };
