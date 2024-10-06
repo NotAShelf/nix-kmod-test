@@ -16,14 +16,18 @@ in
       name = "${pname}-${version}";
     };
 
+    enableParallelBuilding = true;
+
     nativeBuildInputs = kernel.moduleBuildDependencies;
     passthru.kernel-version = version;
 
-    makeFlags = [
-      "KERNELRELEASE=${kernel.modDirVersion}"
-      "KERNELDIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
-      "INSTALL_MOD_PATH=${builtins.placeholder "out"}"
-    ];
+    makeFlags =
+      (kernel.makeFlags or [])
+      ++ [
+        "KERNELRELEASE=${kernel.modDirVersion}"
+        "KERNELDIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
+        "INSTALL_MOD_PATH=${builtins.placeholder "out"}"
+      ];
 
     buildFlags = ["modules"];
     installTargets = ["modules_install"];
